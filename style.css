@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fef9f3;
+    color: #333;
+  }
+  
+  header {
+    text-align: center;
+    background-color: #ffdae0;
+    padding: 20px;
+    border-bottom: 2px solid #f7b3c2;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #d4446a;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #7a1f3b;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .photo-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .photo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Modal */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+  }
+  
+  #caption {
+    margin: 10px auto;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #ffdae0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffdae0;
+    border-top: 2px solid #f7b3c2;
+    color: #7a1f3b;
+  }
+  
+  footer p {
+    font-size: 1.2rem;
+    color: #d4446a;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  footer p:hover {
+    color: #ff7a93;
+  }
+  
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%; /* Lebar maksimum 90% dari layar */
+    max-height: 80%; /* Tinggi maksimum 80% dari layar */
+    object-fit: contain; /* Memastikan gambar tetap proporsional */
+    border-radius: 10px; /* Membuat sudut gambar melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Memberikan bayangan */
+    margin-top: 50px;
+  }
+  
