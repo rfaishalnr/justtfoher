@@ -45,9 +45,40 @@
       font-size: 30px;
       cursor: pointer;
     }
+    .popup-notif {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 14px;
+      z-index: 2000;
+      display: none;
+    }
+
+    .cat-container {
+  position: relative;
+}
+
+.cat {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.cat.clicked {
+  opacity: 0; /* Gambar akan menghilang saat diklik */
+}
+
   </style>
 </head>
 <body>
+    <div class="popup-notif" id="popupNotif">Hello Anita !!! kalo ngebug, refresh aja yaaaa..</div>
   <canvas id="sprinkleCanvas"></canvas>
   <header>
     <h1>Anita's Galery</h1>
@@ -97,9 +128,10 @@
     <p id="click-me">❤️ Klik Me !! ❤️</p>
   </footer>
   <div class="cat-container">
-    <img src="cat1.png" class="cat" alt="Kucing 1">
-    <img src="cat1.png" class="cat" alt="Kucing 2">
+    <img src="cat1.png" class="cat" alt="Kucing 1" onclick="toggleVisibility(this)">
+    <img src="cat1.png" class="cat" alt="Kucing 2" onclick="toggleVisibility(this)">
   </div>
+  
   <div id="photo-modal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="modal-image">
@@ -161,6 +193,19 @@
       modalImg.src = "12.jpeg";
       captionText.innerText = "Made for You ❤️";
     });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const popupNotif = document.getElementById("popupNotif");
+      popupNotif.style.display = "block";
+      setTimeout(() => {
+        popupNotif.style.display = "none";
+      }, 3000);
+    });
+
+    function toggleVisibility(img) {
+  img.classList.toggle('clicked');
+}
+
   </script>
 </body>
 </html>
