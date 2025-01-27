@@ -5,10 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kenangan Indah</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-
-    
+  <canvas id="sprinkleCanvas"></canvas>
   <header>
     <h1>Anita's Galery</h1>
     <p>Semua momen indah</p>
@@ -16,63 +28,89 @@
   <main>
     <div class="gallery">
       <div class="photo-card">
-        <img src="1.jpeg" alt="Momen 1">
+        <img src="1.jpeg" alt="Foto 1">
       </div>
       <div class="photo-card">
-        <img src="2.jpeg" alt="Momen 2">
+        <img src="2.jpeg" alt="Foto 2">
       </div>
       <div class="photo-card">
-        <img src="3.jpeg" alt="Momen 3">
+        <img src="3.jpeg" alt="Foto 3">
       </div>
       <div class="photo-card">
-        <img src="4.jpeg" alt="Momen 4">
+        <img src="4.jpeg" alt="Foto 4">
       </div>
       <div class="photo-card">
-        <img src="5.jpeg" alt="Momen 5">
+        <img src="5.jpeg" alt="Foto 5">
       </div>
       <div class="photo-card">
-        <img src="6.jpeg" alt="Momen 6">
+        <img src="6.jpeg" alt="Foto 6">
       </div>
       <div class="photo-card">
-        <img src="7.jpeg" alt="Momen 1">
+        <img src="7.jpeg" alt="Foto 7">
       </div>
       <div class="photo-card">
-        <img src="8.jpeg" alt="Momen 2">
+        <img src="8.jpeg" alt="Foto 8">
       </div>
       <div class="photo-card">
-        <img src="9.jpeg" alt="Momen 3">
+        <img src="9.jpeg" alt="Foto 9">
       </div>
       <div class="photo-card">
-        <img src="10.jpeg" alt="Momen 4">
+        <img src="10.jpeg" alt="Foto 10">
       </div>
       <div class="photo-card">
-        <img src="11.jpeg" alt="Momen 5">
+        <img src="11.jpeg" alt="Foto 11">
       </div>
       <div class="photo-card">
-        <img src="13.jpeg" alt="Momen 6">
+        <img src="13.jpeg" alt="Foto 12">
       </div>
     </div>
   </main>
   <footer>
     <p id="click-me">❤️ Klik Me !! ❤️</p>
-
-
-      
   </footer>
-
   <div class="cat-container">
     <img src="cat1.png" class="cat" alt="Kucing 1">
     <img src="cat1.png" class="cat" alt="Kucing 2">
-    <!-- <img src="cat1.png" class="cat" alt="Kucing 3"> -->
   </div>
-  
-  <!-- Modal -->
-  <div id="photo-modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modal-image">
-    <div id="caption"></div>
-  </div>
-
-  <script src="script.js"></script>
+  <script>
+    const canvas = document.getElementById("sprinkleCanvas");
+    const ctx = canvas.getContext("2d");
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    
+    const particles = [];
+    
+    function createParticles() {
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 3,
+          color: `rgba(255, 255, 255, ${Math.random()})`,
+          speed: Math.random() * 0.5,
+        });
+      }
+    }
+    
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.y += p.speed;
+        if (p.y > canvas.height) p.y = 0;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    
+    createParticles();
+    animateParticles();
+  </script>
 </body>
 </html>
